@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Local Area Network IP Address</title>
+  <script src="get-local-area-network-ip-address.js"></script>
+  <style>
+    #root > #resolved > h2 {display: inline; margin: 0 0 0 0.25em;}
+    #root > #rejected > h2 {margin-top: 0;}
+  </style>
+</head>
+<body>
+
+<div id="root">Loading&hellip;</div>
+
+<script>
+window.getLocalAreaNetworkIpAddress(1000)
+.then(ip => {
+  document.getElementById('root').innerHTML = `<div id="resolved">Your LAN IP is: <h2>${ip}</h2></div>`
+})
+.catch(error => {
+  document.getElementById('root').innerHTML = `<div id="rejected"><h2>Error:</h2><div>${error.message}</div></div>`
+})
+</script>
+
+</body>
+</html>
